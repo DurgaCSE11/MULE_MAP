@@ -8,16 +8,16 @@ const generateMockNetwork = () => {
   const nodes = [];
   const links = [];
   
-  // Central Mule Account
+  // Central Mule Account (Aggregator)
   nodes.push({ id: 'ACC-1029', group: 1, val: 20, name: 'Mule Aggregator' });
   
-  // Layer 1 (Depositors)
+  // Layer 1 (Depositors / Victims)
   for (let i = 1; i <= 5; i++) {
     nodes.push({ id: `DEP-${i}`, group: 2, val: 5, name: 'Victim/Source' });
     links.push({ source: `DEP-${i}`, target: 'ACC-1029', value: 2 });
   }
   
-  // Layer 2 (Distributors)
+  // Layer 2 (Distributors / Cash out)
   for (let i = 1; i <= 12; i++) {
     nodes.push({ id: `DIST-${i}`, group: 3, val: 3, name: 'Money Mule' });
     links.push({ source: 'ACC-1029', target: `DIST-${i}`, value: 1 });
@@ -32,6 +32,17 @@ const NetworkView = () => {
 
   useEffect(() => {
     setGraphData(generateMockNetwork());
+    
+    // Adjust the physics engine so the nodes spread out nicely 
+    // instead of clumping together in a "balloon" shape.
+    setTimeout(() => {
+      if (graphRef.current) {
+        // Increase repulsive force between nodes
+        graphRef.current.d3Force('charge').strength(-400);
+        // Increase the resting distance of the links
+        graphRef.current.d3Force('link').distance(80);
+      }
+    }, 100);
   }, []);
 
   return (
@@ -57,9 +68,9 @@ const NetworkView = () => {
             graphData={graphData}
             nodeAutoColorBy="group"
             nodeRelSize={6}
-            linkColor={() => 'rgba(255,255,255,0.2)'}
-            linkWidth={1.5}
-            linkDirectionalParticles={2}
+            linkColor={() => 'rgba(255,255,255,0.3)'}
+            linkWidth={2}
+            linkDirectionalParticles={3}
             linkDirectionalParticleSpeed={0.005}
             backgroundColor="transparent"
             onNodeClick={(node) => {
