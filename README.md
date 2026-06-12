@@ -1,9 +1,14 @@
 # Mule Map 🗺️💰
 **Developed by Team DhanVEER**
+<br>
 **1.**
+<br>
 **2.Durga Prasad Mahapatra(Frontend Developer)**
+<br>
 **3.**
+<br>
 **4.**
+<br>
 
 An advanced, scalable AI/ML-driven fraud detection framework designed to identify sophisticated financial fraud, money laundering, and mule account ecosystems in near real-time. Unlike traditional rule-based systems, **Mule Map** combines behavioral analytics, graph-based network tracing, and Explainable AI (XAI) to map out full fraudulent networks rather than just flagging isolated transactions.
 
