@@ -37,7 +37,10 @@ const Hero = () => {
           Traditional rule-based systems are no longer enough. We leverage hybrid machine learning, behavioral analytics, and graph-based network detection to identify both known and emerging financial fraud patterns in near real-time.
         </p>
         
-        <button className="btn-primary">
+        <button 
+          className="btn-primary" 
+          onClick={() => document.getElementById('architecture')?.scrollIntoView({ behavior: 'smooth' })}
+        >
           Explore Architecture
         </button>
       </motion.div>

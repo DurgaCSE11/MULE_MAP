@@ -31,7 +31,7 @@ const layers = [
 
 const Architecture = () => {
   return (
-    <section className="section-container">
+    <section id="architecture" className="section-container">
       <motion.h2 
         className="section-title"
         initial={{ opacity: 0, y: 30 }}
