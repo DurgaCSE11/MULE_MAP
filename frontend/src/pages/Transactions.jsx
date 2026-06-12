@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const mockTransactions = [
   { id: 'TXN-98234', account: 'ACC-1029', amount: '$45,000', type: 'Wire Transfer', riskScore: 0.92, status: 'Blocked' },
@@ -18,6 +19,8 @@ const getRiskBadge = (score) => {
 };
 
 const Transactions = () => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -52,7 +55,17 @@ const Transactions = () => {
                 <td style={{ fontWeight: 600 }}>{txn.amount}</td>
                 <td>{getRiskBadge(txn.riskScore)}</td>
                 <td>
-                  <button className="btn-primary" style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}>
+                  <button 
+                    className="btn-primary" 
+                    style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}
+                    onClick={() => {
+                      if (txn.riskScore >= 0.8) {
+                        navigate('/alerts');
+                      } else {
+                        alert(`Viewing transaction ${txn.id} - Status: ${txn.status}`);
+                      }
+                    }}
+                  >
                     View
                   </button>
                 </td>
