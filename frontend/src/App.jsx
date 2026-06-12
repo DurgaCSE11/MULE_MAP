@@ -1,26 +1,23 @@
 import React from 'react';
-import ThreeScene from './components/ThreeScene';
-import Hero from './components/Hero';
-import Architecture from './components/Architecture';
-import Workflow from './components/Workflow';
-import Advantages from './components/Advantages';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import DashboardLayout from './layouts/DashboardLayout';
+import Dashboard from './pages/Dashboard';
+import Transactions from './pages/Transactions';
+import Alerts from './pages/Alerts';
+import NetworkView from './pages/NetworkView';
 
 function App() {
   return (
-    <div className="app-container">
-      <ThreeScene />
-      
-      <div style={{ position: 'relative', zIndex: 10 }}>
-        <Hero />
-        <Architecture />
-        <Workflow />
-        <Advantages />
-        
-        <footer style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem', color: 'var(--text-muted)' }}>
-          <p>© {new Date().getFullYear()} MULE MAP. AI/ML-driven Fraud Detection Framework.</p>
-        </footer>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="transactions" element={<Transactions />} />
+          <Route path="alerts" element={<Alerts />} />
+          <Route path="network" element={<NetworkView />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
