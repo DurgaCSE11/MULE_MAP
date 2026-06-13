@@ -1,7 +1,7 @@
 # Mule Map 🗺️💰
 **Developed by Team DhanVEER**
 <br>
-**1.**
+**1.Nancy Panda(Team Leader,UI/UX Designer)**
 <br>
 **2.Durga Prasad Mahapatra(Frontend Developer)**
 <br>
